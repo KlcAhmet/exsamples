@@ -1,3 +1,17 @@
+## Constructor
+```
+function Test(a, b, c) {
+  this.a = a;
+  this.b = b;
+  this.c = c;
+}
+new Test(1, 2, 3); // Test { a: 1, b: 2, c: 3 }
+
+Test.prototype.testFunction = (a, b, c) => {
+  return { a, b, c };
+};
+new Test().testFunction(4, 5, 6); // { a: 4, b: 5, c: 6 }
+```
 ## Default
 ```
 function test(x = 1) {
