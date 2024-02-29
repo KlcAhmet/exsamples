@@ -78,7 +78,6 @@ Add new functionality to handle user authentication.
 
 This commit introduces a new module to manage user authentication. It includes
 functions for user login, registration, and password recovery.
-
 ```
 
 ### Footer

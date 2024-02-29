@@ -32,8 +32,8 @@ for (let func of operations) {
 ```
 const object = { a: 1, b: 2, c: 3 };
 
-for (let property in object) {
-  console.log(`${property}: ${object[property]}`);
+for (const key in object) {
+  console.log(`${key}:`, object[key])
   /*
     a: 1
     b: 2
