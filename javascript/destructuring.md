@@ -1,6 +1,7 @@
 ```
 [x, y] = [y, x]; 
 console.log(x); //13
+const [first, second] = [1, 2, 3];
 ```
 ```
 const test1 = {
