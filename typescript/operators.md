@@ -89,3 +89,103 @@ type P = ReturnType<typeof f>;
 >    y: number;
 > }
 >```
+
+# Indexed Access Types
+```
+type Person = { age: number; name: string; alive: boolean };
+type Age = Person["age"];
+  > type Age = number
+```
+
+# Conditional Types
+```
+interface Animal {
+  live(): void;
+}
+interface Dog extends Animal {
+  woof(): void;
+}
+ 
+type Example1 = Dog extends Animal ? number : string;
+    > type Example1 = number
+ 
+type Example2 = RegExp extends Animal ? number : string;
+    > type Example2 = string
+```
+Conditional types take a form that looks a little like conditional expressions
+(`condition ? trueExpression : falseExpression`) in JavaScript:
+```
+SomeType extends OtherType ? TrueType : FalseType;
+```
+```
+interface IdLabel {
+  id: number /* some fields */;
+}
+interface NameLabel {
+  name: string /* other fields */;
+}
+
+type CreateLabel<T extends string | number> =
+  T extends string ? NameLabel : IdLabel;
+
+function createLabelImproved<T extends string | number>(nameOrId: T): CreateLabel<T> {
+  return (typeof nameOrId === "string" ? { name: nameOrId } : { id: nameOrId }) as CreateLabel<typeof nameOrId> 
+
+  // OR
+  /* if (typeof nameOrId === "string") {
+    return { name: nameOrId } as CreateLabel<typeof nameOrId>
+  } else {
+    return { id: nameOrId } as CreateLabel<typeof nameOrId>;
+  } */
+}
+
+const label1: NameLabel = createLabelImproved("Alice");
+const label2: IdLabel = createLabelImproved(123);
+console.log(label1) // {name: Alice}
+console.log(label2) // {id: 123}
+```
+
+# Mapped Types
+```
+type OnlyBoolsAndNumbers = {
+  [key: string]: boolean | number;
+};
+
+const conforms: OnlyBoolsAndNumbers = {
+  del: true,
+  meta: false,
+};
+
+
+const conforms2: OnlyBoolsAndNumbers = {
+  del: true,
+  myNumber: 1232,
+};
+
+
+const conforms3: OnlyBoolsAndNumbers = {
+  del: true,
+  name: "name", // Error: Type 'string' is not assignable to type 'number | boolean'.
+};
+```
+
+A mapped type is a generic type which uses a union of `PropertyKeys (frequently created
+[via a keyof](https://www.typescriptlang.org/docs/handbook/2/indexed-access-types.html)) to iterate 
+through keys to create a type:
+```
+type OptionsFlags<Type> = {
+  [Property in keyof Type]: boolean;
+};
+
+type Features = {
+  darkMode: () => void;
+  newUserProfile: () => void;
+};
+
+type FeatureOptions = OptionsFlags<Features>;
+
+      //  type FeatureOptions = {
+      //      darkMode: boolean;
+      //      newUserProfile: boolean;
+      //  }
+```
