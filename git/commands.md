@@ -88,3 +88,16 @@ $ git revert <commit id>
 # You can also use this if you want to revert the latest commit:
 $ git revert HEAD
 ```
+### `git clean`
+The git clean command requires you to use either the `-f` or `-n` flag when running it. If you don’t use either of these 
+flags, the command will fail with an error message similar to “no f’s given”. For example, if you try to run `git clean` 
+without any flags, you might see an error message.
+
+The `-n` flag is used to show a dry run of the command, which means it will display the files and directories that would
+be removed, but it won’t actually remove them.
+```
+$ git clean -n
+```
+`$ git clean -f`: This flag is used to force the removal of untracked files and directories from your Git repository.
+`$git clean -f -d`: This combination of flags will forcefully remove untracked directories from your Git repository,
+but it will not remove any untracked files.
