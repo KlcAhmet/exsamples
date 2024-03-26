@@ -1,20 +1,25 @@
 # Branch
 
-**feature:** Yeni geliştirilecek bir özelliği iletir. Örneğin,  `feature/add-filters`
+**feature:** Yeni geliştirilecek bir özelliği iletir. Örneğin, `feature/add-filters`
 
-**release:** Yeni bir sürüm hazırlamak için kullanılır.  `release/` öneki, yeni güncellemeleri ana branch'ten bir release oluşturmak için birleştirmeden önce son dokunuşlar ve revizyonlar gibi görevleri yapmak için sıklıkla kullanılır. Örneğin,  `release/v3.3.1-beta`
+**release:** Yeni bir sürüm hazırlamak için kullanılır. `release/` öneki, yeni güncellemeleri ana branch'ten bir release 
+oluşturmak için birleştirmeden önce son dokunuşlar ve revizyonlar gibi görevleri yapmak için sıklıkla kullanılır. Örneğin, 
+`release/v3.3.1-beta`
 
-**bugfix:** Koda bir hata çözüyor olduğunuzu iletir ve genellikle bir issue ile ilgilidir. Örneğin,  `bugfix/sign-in-flow`
+**bugfix:** Koda bir hata çözüyor olduğunuzu iletir ve genellikle bir issue ile ilgilidir. Örneğin, `bugfix/sign-in-flow`
 
-**hotfix:**  `bugfix`e benzerdir, ancak prodüksiyon ortamında bulunan kritik bir hatayı düzeltmekle ilgilidir. Örneğin,  `hotfix/cors-error`
+**hotfix:**  `bugfix`e benzerdir, ancak prodüksiyon ortamında bulunan kritik bir hatayı düzeltmekle ilgilidir. Örneğin, 
+`hotfix/cors-error`
 
-**docs:** Dokümantasyon yazmak için kullanılır. Örneğin,  `docs/quick-start`
+**docs:** Dokümantasyon yazmak için kullanılır. Örneğin, `docs/quick-start`
 
-Görev yönetimi ile çalışıyorsanız, örneğin Jira, Trello, ClickUp veya User Story oluşturabilen benzer bir araçla çalışıyorsanız, her kartın ilişkili bir numarası vardır. Bu nedenle, bu kart numaralarını şube adı öneklerinde kullanmak yaygındır. Örneğin:
+Görev yönetimi ile çalışıyorsanız, örneğin Jira, Trello, ClickUp veya User Story oluşturabilen benzer bir araçla
+çalışıyorsanız, her kartın ilişkili bir numarası vardır. Bu nedenle, bu kart numaralarını şube adı öneklerinde kullanmak
+yaygındır. Örneğin:
 
 `feature/T-531-add-sidebar` 
- `docs/T-789-update-readme`  
- `hotfix/T-142-security-path`
+`docs/T-789-update-readme`  
+`hotfix/T-142-security-path`
 
 # Commit
 -   **Use the imperative mood in the subject line.**  For example:
