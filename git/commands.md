@@ -21,6 +21,9 @@ $ git add . # Stage all changes
 Commit your staged changes with `git commit`. Include a meaningful commit message to describe the purpose of the commit.
 ```
 $ git commit -m "Added new feature"
+
+# Modify the last commit with the latest changes as a new commit:
+$ git commit --amend -m “<commit-message>"
 ```
 ### `git status`: Checking Repository Status
 Stay informed about the status of your repository with `git status`. It reveals information about modified files, 
