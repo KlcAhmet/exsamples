@@ -64,3 +64,36 @@ console.log(RandomNGenerator) // [class RandomNumberGenerator]
 console.log(math.pi) // 3.14
 console.log(math.absolute(math.phi)) // 1.61
 ```
+
+## Embrace Tree Shaking
+Tree shaking is a technique that removes dead code during the bundling process. Utilize modern ES6 syntax, including 
+import and export statements, to enable tree shaking and eliminate unused code from your application.
+
+Example:
+
+Suppose you have a utility file with multiple functions:
+```
+// utils.js
+export function add(a, b) {
+  return a + b;
+}
+
+export function subtract(a, b) {
+  return a - b;
+}
+
+// main.js
+import { add } from './utils';
+const result = add(3, 4);
+```
+
+- Configure Webpack to enable optimization settings for production mode:
+```
+// webpack.config.js
+module.exports = {
+  mode: 'production',
+  optimization: {
+    usedExports: true,
+   },
+ };
+```

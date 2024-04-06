@@ -215,3 +215,7 @@ We can list all the npm packages installed in our project simply by running  `**
 We can make use of  `--depth`  flag to limit the search depth
 
     npm ls --depth=1
+
+##  Remove unused packages
+Sometimes we forget to remove packages that are defined in `package.json` but no longer needed.
+You can check those items by running `npx depcheck`.

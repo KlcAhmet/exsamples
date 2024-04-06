@@ -54,3 +54,20 @@ function fetchData() {
    }
 }
 ```
+
+# Leverage Dynamic Imports
+Utilize dynamic imports, enabled by ES6 modules, to load JavaScript modules conditionally. This strategy allows you to
+request specific bundles only when required, optimizing the loading process and improving overall efficiency.
+
+```
+document.getElementById('dashboard').addEventListener('click', () => {
+  import('./utility.js')
+    .then((module) => {
+      // Use utility module APIs
+        module.callSomeFunction();
+  })
+  .catch((error) => {
+    console.error("Oops! An error has occurred");
+  });
+});
+```

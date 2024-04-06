@@ -50,3 +50,17 @@ You can use the  `srcset`  attribute with the  `<img>`  and  `<source>`  (in  `<
       <source media="(min-width:465px)" srcset="img_white_flower.jpg">
       <img src="img_orange_flowers.jpg" alt="Flowers" style="width:auto;">
     </picture>
+
+# Asynchronous Loading
+Enhance network bandwidth utilization by loading JavaScript asynchronously. Use the async and defer attributes to 
+control the downloading and execution order of your scripts, preventing delays or blocks in HTML parsing and rendering.
+
+Example:
+```
+<script async defer src="bundle.js"></script>
+```
+> Benefit of Using async and defer Together:
+> 
+> - `async` loads the script asynchronously, allowing HTML parsing to continue without waiting for the script to download.
+> 
+> - `defer` ensures that the script executes in order after HTML parsing is complete.

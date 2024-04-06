@@ -1,3 +1,17 @@
+# Primitive
+```
+type Primitive = string | number | bigint | boolean | symbol | null | undefined;
+```
+
+# Falsy
+The type `Falsy` encompasses all possible values that JavaScript (TypeScript) considers "falsy".
+In JavaScript, a value is considered falsy if it translates to `false` when evaluated in a boolean 
+context (e.g., in an `if` statement). This type is optimally designed for scenarios involving type
+coercion to Boolean across different primitive types.
+```
+type Falsy = false | "" | 0 | 0n | null | undefined;
+```
+
 # Type Annotations on Variables
 When you declare a variable using const, var, or let, you can optionally add a type annotation to explicitly specify the type of the variable:
 - let
