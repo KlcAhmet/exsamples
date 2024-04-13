@@ -24,8 +24,6 @@ for (let i = 0; i <= count; i++) {
 console.timeEnd('normal function');
 ```
 
-> normal function: 712.452ms
-
 ```
 console.time('arrow function');
 
@@ -38,6 +36,8 @@ for (let i = 0; i <= count; i++) {
 console.timeEnd('arrow function');
 ```
 
+> normal function: 712.452ms
+>
 > arrow function: 684.23ms
 
 ## Avoid string comparisons
@@ -84,8 +84,6 @@ for (let i = 0; i < 1000000; i++) {
 console.timeEnd('Position');
 ```
 
-> Position: 2.65ms
-
 ```
 console.time('Position2');
 
@@ -100,9 +98,12 @@ for (let i = 0; i < 1000000; i++) {
 console.timeEnd('Position2');
 ```
 
+> Position: 2.65ms
+>
 > Position2: 2.033ms
 
 ## Avoid indirection
+
 ```
 console.time('proxy access');
 const point = new Proxy({ x: 10, y: 20 }, { get: (t, k) => t[k] });
@@ -113,7 +114,7 @@ for (let _ = 0, i = 0; i < 100_000; i++) {
 
 console.timeEnd('proxy access');
 ```
-> proxy access: 2.54ms
+
 ```
 console.time('direct access');
 const point2 = { x: 10, y: 20 };
@@ -124,4 +125,74 @@ for (let _ = 0, i = 0; i < 100_000; i++) {
 
 console.timeEnd('direct access');
 ```
+
+> proxy access: 2.54ms
+>
 > direct access: 0.563ms
+
+## String, classname
+
+```
+const classNames = ['primary', 'selected', 'active', 'medium'];
+```
+
+```
+console.time('mutation');
+
+const result =
+  classNames
+    .map(c => `button--${c}`)
+    .join(' ');
+    
+console.timeEnd('mutation');
+```
+
+```
+console.time('concatenation');
+
+const result2 =
+  classNames
+    .map(c => 'button--' + c)
+    .reduce((acc, c) => acc + ' ' + c, '');
+    
+console.timeEnd('concatenation');
+
+```
+
+> mutation: 0.038ms
+>
+> concatenation: 0.011ms
+
+## Array vs Set
+
+```
+const userIds = Array.from({ length: 1_000 }).map((_, i) => i);
+const adminIdsArray = userIds;
+const adminIdsSet = new Set(adminIdsArray);
+```
+
+```
+console.time('array');
+let aa = 0;
+for (let i = 0; i < userIds.length; i++) {
+  if (adminIdsArray.includes(userIds[i])) {
+    aa += 1;
+  }
+}
+console.timeEnd('array');
+```
+
+```
+console.time('set');
+let bb = 0;
+for (let i = 0; i < userIds.length; i++) {
+  if (adminIdsSet.has(userIds[i])) {
+    bb += 1;
+  }
+}
+console.timeEnd('set');
+```
+
+> array: 0.172ms
+>
+> set: 0.115ms
