@@ -196,3 +196,25 @@ console.timeEnd('set');
 > array: 0.172ms
 >
 > set: 0.115ms
+
+## The Equeal Operator vs The Includes in if statements
+
+```
+const x = null;
+
+console.time('operator');
+if (x === 'abc' || x === 'def' || x === 'ghi' || x === 'jkl') {
+  //logic
+}
+console.timeEnd('operator');
+
+console.time('array-includes');
+if (['abc', 'def', 'ghi', 'jkl'].includes(x)) {
+
+}
+console.timeEnd('array-includes');
+```
+
+> operator: 0.03ms
+>
+> array-includes: 0.003ms
