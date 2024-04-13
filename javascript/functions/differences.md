@@ -1,4 +1,4 @@
-## The Arrow functions faster than the Normal functions
+## The Normal functions faster than The Arrow functions
 
 ```
 let count = 99999998;
@@ -36,9 +36,8 @@ for (let i = 0; i <= count; i++) {
 console.timeEnd('arrow function');
 ```
 
-> normal function: 712.452ms
->
-> arrow function: 684.23ms
+> normal function: 668.192ms
+> arrow function: 755.029ms
 
 ## Avoid string comparisons
 
@@ -98,10 +97,6 @@ for (let i = 0; i < 1000000; i++) {
 console.timeEnd('Position2');
 ```
 
-> Position: 2.65ms
->
-> Position2: 2.033ms
-
 ## Avoid indirection
 
 ```
@@ -125,10 +120,6 @@ for (let _ = 0, i = 0; i < 100_000; i++) {
 
 console.timeEnd('direct access');
 ```
-
-> proxy access: 2.54ms
->
-> direct access: 0.563ms
 
 ## String, classname
 
@@ -158,10 +149,6 @@ const result2 =
 console.timeEnd('concatenation');
 
 ```
-
-> mutation: 0.038ms
->
-> concatenation: 0.011ms
 
 ## Array vs Set
 
@@ -193,10 +180,6 @@ for (let i = 0; i < userIds.length; i++) {
 console.timeEnd('set');
 ```
 
-> array: 0.172ms
->
-> set: 0.115ms
-
 ## The Equeal Operator vs The Includes in if statements
 
 ```
@@ -215,6 +198,39 @@ if (['abc', 'def', 'ghi', 'jkl'].includes(x)) {
 console.timeEnd('array-includes');
 ```
 
-> operator: 0.03ms
+## `length` or isArray in if statements
+
+```
+const x = new Array(399999998);
+
+console.time('length');
+for (let i of x) {
+  if (x.length) {
+  }
+}
+console.timeEnd('length');
+
+console.time('array-includes');
+for (let i of x) {
+  if (Array.isArray(x)) {
+  }
+}
+console.timeEnd('array-includes');
+```
+
+> length: 5.915s
 >
-> array-includes: 0.003ms
+> isArray: 6.126s
+
+const cc = 100;
+
+console.time('XtoX');
+const XtoX = (arr) => arr.filter(x => x);
+const aa = XtoX(['', '', '', true]);
+console.timeEnd('XtoX');
+
+console.time('Boolean');
+const checkWithConstructor = (arr) => arr.filter(Boolean);
+const bb = checkWithConstructor(['', '', '', true]);
+console.timeEnd('Boolean');
+
