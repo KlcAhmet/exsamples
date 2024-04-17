@@ -20,3 +20,31 @@ const isArray = Array.isArray(arr);
 const length = !arr.length | !!arr.length
 if(isArray && length) {}
 ```
+
+## Mapped with Conditions
+```
+// bad
+const arr = someArray.map((item) => {
+    if (item === 0) {
+      return 0
+    } else if (item === 1) {
+      return 1
+    }
+    
+    return item;
+  });
+```
+
+```
+// good
+const arr = someArray.map((item) => {
+    let result = item;
+    if (item === 0) {
+      result = 0
+    } else if (item === 1) {
+      result = 1
+    }
+
+    return result;
+  });
+```
