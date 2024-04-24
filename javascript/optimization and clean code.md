@@ -22,6 +22,7 @@ if(isArray && length) {}
 ```
 
 ## Mapped with Conditions
+
 ```
 // bad
 const arr = someArray.map((item) => {
@@ -47,4 +48,18 @@ const arr = someArray.map((item) => {
 
     return result;
   });
+```
+
+## Convert a String to a Number
+
+```
+const toNumber = (str) => Number(str);
+// or
+const toNumber = (str) => +str;
+```
+
+## Easy Defaults with OR
+
+```
+const result = (undefined || null || false) || "guest"      // result = "guest"
 ```
